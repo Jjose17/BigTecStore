@@ -47,3 +47,4 @@ function moveSlide(direction, sliderId) {
     const widthPercentage = carrousels[sliderId] * 100;
     slider.style.transform = `translateX(-${widthPercentage}%)`;
 }
+/* // Este código JavaScript maneja la funcionalidad de las ventanas modales y los carruseles de imágenes en la página de la tienda de auriculares. Permite abrir y cerrar modales específicos, así como avanzar o retroceder a través de las imágenes del carrusel, asegurando que el usuario pueda navegar por las fotos de los productos de manera fluida. Además, incluye una función para cerrar el modal si el usuario hace clic fuera del contenido, mejorando la experiencia de usuario.    */
