@@ -190,6 +190,8 @@ body {
     align-items: center;
     justify-content: center;
     padding: 20px;
+    /* CORRECCIÓN: Permite que si el contenido es más alto que la pantalla, se pueda deslizar */
+    overflow-y: auto; 
 }
 
 .modal-content {
@@ -201,7 +203,10 @@ body {
     position: relative;
     box-shadow: 0 5px 30px rgba(0,0,0,0.5);
     animation: modalOpen 0.4s ease-out;
-    overflow: hidden;
+    /* CORRECCIÓN: Evita cortes raros en las esquinas redondas */
+    overflow: hidden; 
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .close-btn {
