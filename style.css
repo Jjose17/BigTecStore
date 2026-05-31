@@ -1,0 +1,353 @@
+/* --- Reseteo de Márgenes --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #121212;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+/* ==========================================
+   NUEVA BARRA SUPERIOR (NAVBAR)
+========================================== */
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    z-index: 100; /* Asegura que flote por encima del contenido */
+    background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0));
+}
+
+/* Nombre de la Empresa (Izquierda) */
+.logo h1 {
+    color: #ffffff;
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.logo h1 span {
+    color: #00ff88; /* Detalle en verde de la marca */
+}
+
+/* Redes Sociales (Derecha) */
+.social-nav {
+    display: flex;
+    gap: 15px;
+}
+
+.social-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    backdrop-filter: blur(4px);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Efectos Hover personalizados por Red Social */
+.social-btn.tiktok:hover {
+    background-color: #000000;
+    color: #00f2fe;
+    box-shadow: 0 0 10px #00f2fe, 0 0 20px #fe0979;
+    border-color: #fe0979;
+}
+
+.social-btn.instagram:hover {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    color: #ffffff;
+    box-shadow: 0 0 15px rgba(220, 39, 67, 0.6);
+    border-color: transparent;
+}
+
+.social-btn.facebook:hover {
+    background-color: #1877f2;
+    color: #ffffff;
+    box-shadow: 0 0 12px #1877f2;
+    border-color: #1877f2;
+}
+
+/* ==========================================
+   CONTENEDOR Y TARJETAS PRINCIPALES
+========================================== */
+.store-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.product-card {
+    flex: 1 1 50%;
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; 
+    padding: 60px;
+    position: relative;
+    transition: filter 0.3s ease;
+}
+
+/* Fondos Locales */
+.card-airpods {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.8)), 
+                      url('fondoAirpods.jfif');
+}
+
+.card-deportivos {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.8)), 
+                      url('fondoDeportivos.jfif');
+}
+
+.product-card:hover {
+    filter: brightness(1.12);
+}
+
+.card-content {
+    max-width: 450px;
+    color: #ffffff;
+    z-index: 2;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+.card-content h2 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.card-content .description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: #e0e0e0;
+}
+
+.card-content .price {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 30px;
+    color: #00ff88;
+}
+
+.btn-action {
+    display: inline-block;
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 15px 35px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-action:hover {
+    background-color: #000000;
+    color: #ffffff;
+    outline: 1px solid #ffffff;
+}
+
+/* ==========================================
+   ESTILOS DE LAS VENTANAS MODALES
+========================================== */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 200;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(5px);
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal-content {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    max-width: 900px;
+    width: 100%;
+    border-radius: 12px;
+    position: relative;
+    box-shadow: 0 5px 30px rgba(0,0,0,0.5);
+    animation: modalOpen 0.4s ease-out;
+    overflow: hidden;
+}
+
+.close-btn {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    color: #aaa;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10;
+    transition: color 0.2s;
+}
+
+.close-btn:hover {
+    color: #ff4a4a;
+}
+
+.modal-layout {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.carousel-container {
+    flex: 1 1 45%;
+    max-width: 450px;
+    position: relative;
+    background-color: #111;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.carousel-slide {
+    display: flex;
+    transition: transform 0.4s ease-in-out;
+    width: 100%;
+}
+
+.carousel-slide img {
+    width: 100%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    border: none;
+    background: rgba(0, 0, 0, 0.4);
+    user-select: none;
+    transition: background 0.2s;
+    z-index: 5;
+}
+
+.prev { left: 0; }
+.next { right: 0; }
+.prev:hover, .next:hover { background: rgba(0, 0, 0, 0.8); }
+
+.product-details {
+    flex: 1 1 55%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.product-details h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.modal-price {
+    font-size: 1.5rem;
+    color: #00ff88;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.specs-list {
+    list-style: none;
+    margin-bottom: 30px;
+}
+
+.specs-list li {
+    margin-bottom: 12px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.specs-list li i {
+    color: #00ff88;
+    width: 20px;
+}
+
+.btn-whatsapp-buy {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: #25d366;
+    color: white;
+    text-decoration: none;
+    padding: 15px;
+    font-weight: bold;
+    border-radius: 6px;
+    text-transform: uppercase;
+    transition: background-color 0.3s;
+}
+
+.btn-whatsapp-buy:hover {
+    background-color: #1ebe57;
+}
+
+/* --- Adaptación Celulares --- */
+@media (max-width: 768px) {
+    .main-header {
+        padding: 15px 20px;
+    }
+    .logo h1 { font-size: 1.3rem; }
+    .social-btn { width: 36px; height: 36px; font-size: 1rem; }
+    .product-card {
+        flex: 1 1 100%;
+        min-height: 50vh;
+        padding: 30px;
+        padding-top: 100px; /* Evita que la barra tape el título en celular */
+    }
+    .modal-layout { flex-direction: column; }
+    .carousel-container, .product-details { flex: 1 1 100%; max-width: 100%; }
+    .product-details { padding: 25px; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes modalOpen {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
