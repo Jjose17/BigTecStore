@@ -1,123 +1,152 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda de Auriculares</title>
+    <title>BigTecStore | Sonido y Tecnología</title>
+    <!-- Estilos CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Fuente Inter (estilo limpio tipo Apple) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- Iconos de FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <header class="main-header">
-        <div class="logo">
-            <h1>BigTec<span>Store</span></h1>
+    <!-- Encabezado / Hero Section -->
+    <!-- Hero Section Dividido -->
+    <section class="hero-split">
+        <!-- Columna Izquierda: Textos y Botones -->
+        <div class="hero-left">
+            <span class="sub-tag"><i class="fas fa-circle"></i> SONIDO QUE TE MUEVE</span>
+            <h1 class="hero-title">Todo se escucha <br><span>mejor contigo.</span></h1>
+            <p class="hero-description">
+                Audífonos elegidos para acompañar tu ritmo: desde el primer kilómetro hasta tu canción favorita.
+            </p>
+            <div class="hero-actions">
+                <a href="#products-grid" class="btn-primary">Explorar colección <i class="fas fa-arrow-right"></i></a>
+                <a href="#products-grid" class="btn-secondary">Encontrar mi estilo</a>
+            </div>
         </div>
-        <nav class="social-nav">
-            <a href="https://www.tiktok.com" target="_blank" class="social-btn tiktok" title="TikTok">
-                <i class="fab fa-tiktok"></i>
-            </a>
-            <a href="https://www.instagram.com" target="_blank" class="social-btn instagram" title="Instagram">
-                <i class="fab fa-instagram"></i>
-            </a>
-            <a href="https://www.facebook.com" target="_blank" class="social-btn facebook" title="Facebook">
-                <i class="fab fa-facebook-f"></i>
-            </a>
+
+
+        <!-- Columna Derecha: Imagen Banner + Highlights -->
+        <div class="hero-right">
+            <!-- Badge Flotante Neón -->
+            <div class="badge-floating">
+                <span>HASTA</span>
+                <strong>24H</strong>
+                <small>DE BATERÍA</small>
+            </div>
+
+            <!-- Imagen Principal (Puedes usar fondoAirpods.jfif o la que gustes) -->
+            <img src="img/fondoAirpods.jfif" alt="Audífonos Destacados" class="hero-img">
+
+            <!-- Overlay de Producto Destacado (Abajo a la izquierda de la foto) -->
+            <div class="product-highlight">
+                <span class="num-badge">01</span>
+                <div class="highlight-info">
+                    <h4>Airpods 3</h4>
+                    <p>Sonido envolvente y comodidad durante todo el día.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Estilos / Categorías Destacadas -->
+    <section class="styles-section container">
+        <h2 class="styles-title">Dos estilos. <br><span>Una obsesión.</span></h2>
+
+        <div class="styles-grid">
+            <!-- Tarjeta Deportivos -->
+            <div class="style-card category-trigger" data-cat="deportivos">
+                <img src="img/fondoDeportivos.jfif" alt="Audífonos Deportivos" class="style-bg">
+                <div class="style-overlay">
+                    <span class="style-tag">RESISTENTES · LIGEROS</span>
+                    <h3>Deportivos</h3>
+                    <div class="style-footer">
+                        <span>Ver colección</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarjeta AirPods -->
+            <div class="style-card category-trigger" data-cat="airpods">
+                <img src="img/fondoAirpods.jfif" alt="AirPods" class="style-bg">
+                <div class="style-overlay">
+                    <span class="style-tag">SIMPLICIDAD · PRECISIÓN</span>
+                    <h3>AirPods</h3>
+                    <div class="style-footer">
+                        <span>Ver colección</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Productos -->
+    <main class="container">
+        <!-- Selector de Categorías -->
+        <nav class="categories-nav">
+            <button class="cat-btn active" data-category="todos">Todos</button>
+            <button class="cat-btn" data-category="airpods">AirPods</button>
+            <button class="cat-btn" data-category="deportivos">Deportivos</button>
         </nav>
-    </header>
 
-    <main class="store-container">
-        
-        <div class="product-card card-airpods">
-            <div class="card-content">
-                <h2>AirPods Pro 3</h2>
-                <p class="description">Vive la experiencia premium de los AirPods Pro 3. Sonido, estilo y tecnología en un solo lugar.</p>
-                <p class="price">$130.000 - $140.000</p>
-                <button class="btn-action" onclick="openModal('modal-airpods')">Ver Detalles</button>
-            </div>
-        </div>
-
-        <div class="product-card card-deportivos">
-            <div class="card-content">
-                <h2>Audífonos Deportivos</h2>
-                <p class="description">Calidad al mejor precio. Comodidad, resistencia y sonido increíble te esperan en tus entrenamientos.</p>
-                <p class="price">$90.000 - $100.000</p>
-                <button class="btn-action" onclick="openModal('modal-deportivos')">Ver Detalles</button>
-            </div>
-        </div>
-
+        <!-- Grilla de Productos (Cargada desde JS) -->
+        <section id="products-grid" class="products-grid">
+            <div class="loading">Cargando catálogo...</div>
+        </section>
     </main>
 
-    <div id="modal-airpods" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('modal-airpods')">&times;</span>
-            <div class="modal-layout">
-                <div class="carousel-container">
-                    <div class="carousel-slide" id="slider-airpods">
-                        <img src="Air1.jfif" alt="AirPods Foto 1">
-                        <img src="Air2.jfif" alt="AirPods Foto 2">
-                        <img src="Air3.jfif" alt="AirPods Foto 3">
-                        <img src="Air4.jfif" alt="AirPods Foto 4">
-                        <img src="Air5.jfif" alt="AirPods Foto 5">
-                        <img src="Air6.jfif" alt="AirPods Foto 6">
-                        <img src="Air7.jfif" alt="AirPods Foto 7">
-                    </div>
-                    <button class="prev" onclick="moveSlide(-1, 'slider-airpods')">&#10094;</button>
-                    <button class="next" onclick="moveSlide(1, 'slider-airpods')">&#10095;</button>
+    <!-- Footer -->
+    <footer>
+        <!-- Sección "Por qué nosotros" (Banner split oscuro) -->
+        <section class="about-split container">
+            <!-- Columna Izquierda: Imagen artística -->
+            <div class="about-left">
+                <img src="img/fondoAirpods.jfif" alt="Experiencia de sonido" class="about-img">
+            </div>
+
+            <!-- Columna Derecha: Mensaje de la marca -->
+            <div class="about-right">
+                <span class="sub-tag"><i class="fas fa-square"></i> NO VENDEMOS RUIDO</span>
+                <h2 class="about-title">Solo lo que vale <br>la pena <br><span>escuchar.</span></h2>
+                <p class="about-description">
+                    Comparamos comodidad, batería y calidad de audio para ofrecer una selección corta, honesta y hecha
+                    para la vida real.
+                </p>
+                <a href="#products-grid" class="btn-secondary">Conoce la selección <i
+                        class="fas fa-arrow-right"></i></a>
+            </div>
+        </section>
+
+        <!-- Footer Completo -->
+        <footer class="main-footer container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3><i class="fas fa-sliders-h"></i> BigTecStore</h3>
+                    <p>Tu música. Tu ritmo. Tu mundo.</p>
                 </div>
-                <div class="product-details">
-                    <h2>AirPods Pro 3</h2>
-                    <p class="modal-price">$130.000 - $140.000</p>
-                    <h3>Especificaciones Técnicas:</h3>
-                    <ul class="specs-list">
-                        <li><i class="fa-solid fa-bolt"></i> Audio espacial con seguimiento dinámico.</li>
-                        <li><i class="fa-solid fa-battery-three-quarters"></i> Hasta 6 hours de reproducción continua.</li>
-                        <li><i class="fa-solid fa-droplet"></i> Protección IPX4 contra sudor y agua.</li>
-                        <li><i class="fa-solid fa-wireless-network"></i> Estuche compatible con carga inalámbrica.</li>
-                        <li><i class="fa-solid fa-sliders"></i> Ecualización adaptativa inteligente.</li>
-                    </ul>
-                    <a href="https://wa.me/573103337579?text=Hola!%20Me%20interesan%20los%20AirPods%20Pro%203" target="_blank" class="btn-whatsapp-buy">
-                        <i class="fab fa-whatsapp"></i> Consultar por WhatsApp
-                    </a>
+                <div class="footer-links">
+                    <a href="#products-grid">Comprar</a>
+                    <a href="#products-grid">Nosotros</a>
+                    <a href="https://wa.me/573213284988" target="_blank">Contacto</a>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <div id="modal-deportivos" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('modal-deportivos')">&times;</span>
-            <div class="modal-layout">
-                <div class="carousel-container">
-                    <div class="carousel-slide" id="slider-deportivos">
-                        <img src="Dep1.jfif" alt="Deportivos Foto 1">
-                        <img src="Dep2.jfif" alt="Deportivos Foto 2">
-                        <img src="Dep3.jfif" alt="Deportivos Foto 3">
-                        <img src="Dep4.jfif" alt="Deportivos Foto 4">
-                    </div>
-                    <button class="prev" onclick="moveSlide(-1, 'slider-deportivos')">&#10094;</button>
-                    <button class="next" onclick="moveSlide(1, 'slider-deportivos')">&#10095;</button>
-                </div>
-                <div class="product-details">
-                    <h2>Audífonos Deportivos</h2>
-                    <p class="modal-price">$90.000 - $100.000</p>
-                    <h3>Especificaciones Técnicas:</h3>
-                    <ul class="specs-list">
-                        <li><i class="fa-solid fa-ear-listen"></i> Sujeción ergonómica especial para running.</li>
-                        <li><i class="fa-solid fa-bluetooth"></i> Chip Bluetooth 5.3 de emparejamiento rápido.</li>
-                        <li><i class="fa-solid fa-shield-halved"></i> Impermeabilidad IPX7 contra sudor extremo.</li>
-                        <li><i class="fa-solid fa-battery-full"></i> Batería de larga duración (8 horas continuas).</li>
-                        <li><i class="fa-solid fa-gauge-high"></i> Aislamiento acústico pasivo y bajos potentes.</li>
-                    </ul>
-                    <a href="https://wa.me/573103337579?text=Hola!%20Me%20interesan%20los%20Audífonos%20Deportivos" target="_blank" class="btn-whatsapp-buy">
-                        <i class="fab fa-whatsapp"></i> Consultar por WhatsApp
-                    </a>
-                </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 BigTecStore. Todos los derechos reservados.</p>
             </div>
-        </div>
-    </div>
+        </footer>
+    </footer>
 
-    <script src="script.js"></script>
+    <!-- Scripts al final del body -->
+    <script type="module" src="js/firebase-config.js"></script>
+    <script type="module" src="js/app.js"></script>
 </body>
+
 </html>
-<!-- // Este código HTML representa la estructura de una tienda en línea de auriculares, con un diseño moderno y funcional. Incluye un encabezado con el logo de la tienda y enlaces a redes sociales, una sección principal con tarjetas de productos (AirPods Pro 3 y Audífonos Deportivos), y modales para mostrar detalles adicionales de cada producto, incluyendo un carrusel de imágenes y especificaciones técnicas. Además, hay botones para consultar por WhatsApp, facilitando la comunicación directa con los clientes interesados. -->
